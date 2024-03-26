@@ -1,0 +1,9 @@
+node_modules
+# .DS_Store
+.env
+# .env.test
+# __tests__/coverage
+# __tests__/database.sqlite
+# tmp
+yarn.lock
+yarn-error.log
