@@ -6,7 +6,7 @@ let intervaloId = null;
 class ServerController {
   async verifyStatus(req, res) {
     try {
-      const statusServer = intervaloId ? 'true' : 'false';
+      const statusServer = intervaloId ? true : false;
 
       return res.json({
         statusServer,
@@ -18,14 +18,14 @@ class ServerController {
 
   async start(req, res) {
     try {
-      const { interval = 60 } = req.query;
+      const { interval = 600 } = req.query;
 
       if (!intervaloId) {
-        intervaloId = setInterval(serverStart, interval * 1000);
+        intervaloId = setInterval(() => serverStart(interval), interval * 1000);
       }
 
       return res.json({
-        message: `Server running with interval of ${interval} seconds.`,
+        message: `Servidor rodando no intervalo de ${interval} segundos.`,
       });
     } catch (error) {
       return res.status(400).json(error.message);

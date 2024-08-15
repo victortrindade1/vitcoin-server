@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-import generateSignature from '../../util/generateSignatureBinance';
+import generateSignature from '../util/generateSignatureBinance';
 
 // Função para fazer uma solicitação à API da Binance
 export default async function callBinanceAPI(endpoint, params = {}) {
@@ -10,12 +10,14 @@ export default async function callBinanceAPI(endpoint, params = {}) {
     .join('&')}`;
   const signature = generateSignature(queryString);
 
+  console.log(queryString);
+
   try {
     const response = await axios({
       method: 'get',
       url: `${process.env.BASE_URL}/api/v3/${endpoint}?${queryString}&signature=${signature}`,
       headers: {
-        'X-MBX-APIKEY': apiKey,
+        'X-MBX-APIKEY': process.env.API_KEY,
       },
     });
     return response.data;

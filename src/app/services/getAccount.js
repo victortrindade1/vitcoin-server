@@ -2,7 +2,9 @@ import callBinanceAPI from '../../config/callBinanceAPI';
 
 const getAccount = async () => {
   try {
-    const response = await callBinanceAPI('account');
+    const response = await callBinanceAPI('account', {
+      // omitZeroBalances: true,
+    });
 
     return response;
   } catch (error) {

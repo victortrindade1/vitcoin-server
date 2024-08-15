@@ -17,6 +17,8 @@ class App {
   middlewares() {
     // this.server.use(cors({ origin: 'https://meuservidor.com.br' }));
 
+    // comentario a toa
+
     // this.server.use((req, res, next) => {
     //   setTimeout(next, 5000);
     // });
